@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-const mongodb = require('./db/connect');
-const professionalRoutes = require('./routes/professionalRoutes');
+const mongodb = require('./backend/db/connect');
+const professionalRoutes = require('./backend/routes/professionalRoutes');
 const PORT = process.env.PORT || 8080;
 //contacts
-const contactsRoutes = require('./routes/contacts');
+const contactsRoutes = require('./backend/routes/contacts');
 app.use('/contacts', contactsRoutes);
 
 app.use((req, res, next) => {
