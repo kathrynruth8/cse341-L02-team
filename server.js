@@ -1,19 +1,22 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const mongodb = require('./backend/db/connect');
 const professionalRoutes = require('./backend/routes/professionalRoutes');
 const PORT = process.env.PORT || 8080;
 //contacts
 const contactsRoutes = require('./backend/routes/contacts');
-app.use('/contacts', contactsRoutes);
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow frontend access
-  next();
-});
 
 // Use routes
-app.use(professionalRoutes);
+app
+
+  .use(bodyParser.json())
+  .use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Allow frontend access
+    next();
+  })
+  .use('/contacts', contactsRoutes)
+  .use(express.json());
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

@@ -12,3 +12,34 @@ GET http://localhost:8080/contacts/681647035b1e83524a232e0e
 
 ###
 GET http://localhost:8080/contacts/6816470a5b1e83524a232e0f
+
+
+### POST new contact
+POST http://localhost:8080/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Kathryn",
+  "lastName": "Lingard",
+  "email": "klingard@test.com",
+  "favoriteColor": "Pink",
+  "birthday": "2002-05-15"
+}
+
+### PUT contact
+PUT http://localhost:8080/contacts/681646fa5b1e83524a232e0d HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"Brian",
+    "lastName":"Lingard",
+    "email":"blingard@gmail.com",
+    "favoriteColor":"Green",
+    "birthday":"12/12/20"
+}
+
+### DELETE contact
+DELETE http://localhost:8080/contacts/681ec88e2d77928b3e71dfd1 HTTP/1.1
+
+
+
