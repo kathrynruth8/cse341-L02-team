@@ -99,7 +99,7 @@ module.exports = {
         return res.status(404).json({ message: 'Contact not found' });
       }
 
-      res.status(204).send(); // No content, successful deletion
+      res.status(200).json({ message: 'Contact successfully deleted' });
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
