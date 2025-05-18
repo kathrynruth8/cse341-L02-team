@@ -4,12 +4,15 @@ const bodyParser = require('body-parser');
 const mongodb = require('./backend/db/connect');
 const professionalRoutes = require('./backend/routes/professionalRoutes');
 const PORT = process.env.PORT || 8080;
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger.json');
+const cors = require('cors');
 //contacts
 const contactsRoutes = require('./backend/routes/contacts');
 
 // Use routes
 app
-
+  .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
   .use(bodyParser.json())
   .use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*'); // Allow frontend access
